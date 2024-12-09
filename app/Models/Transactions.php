@@ -15,10 +15,18 @@ class Transactions extends Model
         'amount',
         'transaction_type',
         'transfer_type',
-        'author',
+        'user_id',
+        'target',
+        'giver',
+        'giver_email',
         ];
     public function fund()
     {
         return $this->belongsTo(Fund::class, 'fund_id');
+    }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

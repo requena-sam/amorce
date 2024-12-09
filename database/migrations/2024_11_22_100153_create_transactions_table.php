@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('fund_id');
-            $table->text('donator');
-            $table->text('donator_email');
+            $table->text('giver');
+            $table->text('giver_email');
             $table->text('transfer_type');
-            $table->text('author');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedInteger('amount');
             $table->text('transaction_type');
             $table->timestamps();

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Enums\TransactionType;
 use App\Enums\TransferType;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,11 +19,12 @@ class TransactionsFactory extends Factory
      */
     public function definition(): array
     {
+        $user = User::inRandomOrder()->first();
         return [
-            'author' => $this->faker->words(2, true),
+            'user_id' => $user->id,
             'amount' => $this->faker->randomNumber(5, false),
-            'donator' => $this->faker->name(),
-            'donator_email' => $this->faker->email(),
+            'giver' => $this->faker->name(),
+            'giver_email' => $this->faker->email(),
             'transfer_type' => collect([TransferType::CSV->value, TransferType::MANUAL->value])->random(),
             'transaction_type' => collect([TransactionType::DEPOT->value, TransactionType::RETRAIT->value])->random(),
         ];

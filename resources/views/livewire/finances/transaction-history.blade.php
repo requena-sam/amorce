@@ -19,7 +19,7 @@
                     </td>
                     <td class="px-4 py-3 flex items-center space-x-3">
                         <span class="bg-amber-300 w-5 h-5 rounded-full"></span>
-                        <span class="text-gray-700">{{ $transaction->author }}</span>
+                        <span class="text-gray-700">{{ $transaction->author->name }}</span>
                     </td>
                     <td class="px-4 py-3 text-sm text-gray-700">
                         {{ $transaction->created_at->format('d/m/Y') }}
