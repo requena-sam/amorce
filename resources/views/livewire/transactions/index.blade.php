@@ -1,6 +1,5 @@
 <section>
     @livewire('alert', ['message' => 'Transaction ajoutée avec succès'])
-
     <div class="flex justify-between mb-5">
         <h2 class="text-3xl">Transactions</h2>
         <x-cta-opener modalcontent="">Importer un fichier de transaction</x-cta-opener>

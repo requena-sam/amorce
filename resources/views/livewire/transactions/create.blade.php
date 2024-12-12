@@ -2,7 +2,7 @@
     <h3 class="text-2xl font-medium mb-4">Ajouter une transaction</h3>
     <form wire:submit.prevent="newTransfer" class="flex flex-col gap-4">
         <div class="flex flex-col gap-1">
-            <x-input-label for="target" value="Fond destinataire"/>
+            <x-input-label for="target" value="Fond concerné"/>
             <select id="target" name="target" wire:model="form.target"  class="border-gray-300 focus:border-amber-400 focus:ring-amber-400 rounded-md shadow-sm w-full box-border">
                 <option value="default" selected>Choisir un fond</option>
                 @foreach($this->funds as $fund)
