@@ -33,6 +33,8 @@ class Create extends Component
         User::create($data);
 
         $this->dispatch('refresh-users');
+        $this->dispatch('openalert');
+
     }
 
     public function render()

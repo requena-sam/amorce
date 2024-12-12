@@ -19,6 +19,7 @@ class Create extends Component
         $data = $this->form->all();
         Fund::create($data);
         $this->dispatch('refresh-funds');
+        $this->dispatch('openalert');
     }
 
     public function render()

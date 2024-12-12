@@ -22,7 +22,7 @@ class TransactionsFactory extends Factory
         $user = User::inRandomOrder()->first();
         return [
             'user_id' => $user->id,
-            'amount' => $this->faker->randomNumber(5, false),
+            'amount' => $this->faker->numberBetween(1, 200),
             'giver' => $this->faker->name(),
             'giver_email' => $this->faker->email(),
             'transfer_type' => collect([TransferType::CSV->value, TransferType::MANUAL->value])->random(),

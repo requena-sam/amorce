@@ -16,11 +16,11 @@ class FundFactory extends Factory
      */
     public function definition(): array
     {
+        $entrance = $this->faker->numberBetween(4000,10000);
         return [
             'name' => $this->faker->words(2, true),
-            'amount' => $this->faker->randomNumber(5, false),
-            'entrance' => $this->faker->randomNumber(5, false),
-            'exit' => $this->faker->randomNumber(5, false),
+            'entrance' => $entrance,
+            'exit' => $this->faker->numberBetween(800, $entrance),
         ];
     }
 }

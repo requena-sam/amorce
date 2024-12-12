@@ -1,4 +1,5 @@
 <section>
+    @livewire('alert', ['message' => 'Utilisateur ajouté avec succès'])
     <div class="flex justify-between mb-5">
         <h2 class="text-3xl">{{__('Utilisateurs')}}</h2>
         <x-cta-opener modalcontent="users.create">Ajouter un utilisateur</x-cta-opener>

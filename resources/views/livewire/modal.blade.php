@@ -1,4 +1,4 @@
-<div x-show="openMod" class="relative z-50">
+<div x-show="openMod" class="relative z-40">
     <!-- Fond semi-transparent -->
     <div
         class="fixed inset-0 bg-black bg-opacity-50 z-40 center"

@@ -17,7 +17,6 @@ class Transactions extends Model
         'transfer_type',
         'user_id',
         'target',
-        'giver',
         'giver_email',
         ];
     public function fund()

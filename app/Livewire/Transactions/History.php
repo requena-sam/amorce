@@ -4,6 +4,7 @@ namespace App\Livewire\Transactions;
 
 use App\Models\Transactions;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -22,6 +23,7 @@ class History extends Component
     {
     }
 
+    #[On('refresh-history')]
     public function render()
     {
         return view('livewire.transactions.history');

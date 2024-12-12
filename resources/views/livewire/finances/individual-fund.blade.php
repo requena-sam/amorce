@@ -1,4 +1,4 @@
-<div x-data="counterAnimation({{ $fund->amount }}, {{ $fund->entrance }}, {{ $fund->exit }})"
+<div x-data="counterAnimation({{ $balance }}, {{ $entranceBalance }}, {{ $exitBalance }})"
      class="bg-white rounded-xl p-8 mb-4">
     <div
         id="fondline"

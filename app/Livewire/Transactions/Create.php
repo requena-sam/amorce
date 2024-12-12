@@ -39,6 +39,8 @@ class Create extends Component
             'giver' => $data['giver'],
             'giver_email' => $data['giver_email'],
         ]);
+        $this->dispatch('openalert');
+        $this->dispatch('refresh-history');
 
     }
 

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('fund_id');
-            $table->text('giver');
-            $table->text('giver_email');
+            $table->text('giver')->nullable();
+            $table->text('giver_email')->nullable();
             $table->text('transfer_type');
             $table->unsignedBigInteger('user_id');
             $table->unsignedInteger('amount');

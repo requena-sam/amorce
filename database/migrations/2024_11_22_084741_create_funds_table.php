@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('funds', function (Blueprint $table) {
             $table->id();
             $table->text('name');
-            $table->unsignedInteger('amount');
+            $table->unsignedInteger('amount')->default(0);
             $table->unsignedInteger('entrance')->default(0);
             $table->unsignedInteger('exit')->default(0);
             $table->timestamps();

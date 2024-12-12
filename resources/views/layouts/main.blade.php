@@ -15,7 +15,7 @@
     <x-navigation.navigation/>
 </nav>
 <!-- Contenu principal -->
-<main class="overflow-y-auto" x-data="{openMod:false}" @openedmodal.window="openMod=true" @closedmodal.window="openMod=false">
+<main class="overflow-y-auto" x-data="{openMod:false, openAlert:false}" @openedmodal.window="openMod=true" @closedmodal.window="openMod=false" @openalert.window="openAlert = true; setTimeout(() => openAlert = false, 3000)">
     <section class="flex justify-end px-12 py-8 bg-white">
         <div class="flex gap-2 items-center">
             <span class="block w-10 h-10 bg-amber-300 rounded-full"></span>
@@ -25,7 +25,7 @@
             </svg>
         </div>
     </section>
-    <section class="p-12">
+    <section class="p-12 relative">
     {{ $slot }}
     </section>
     @livewire('modal')
