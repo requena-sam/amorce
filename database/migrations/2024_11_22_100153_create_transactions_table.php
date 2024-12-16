@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('fund_id');
-            $table->text('giver')->nullable();
-            $table->text('giver_email')->nullable();
+            $table->unsignedBigInteger('source_id')->nullable();
+            $table->string('source')->nullable();
+            $table->unsignedBigInteger('destination_id')->nullable();
+            $table->string('destination')->nullable();
             $table->text('transfer_type');
             $table->unsignedBigInteger('user_id');
             $table->unsignedInteger('amount');
-            $table->text('transaction_type');
+            $table->text('transaction_type')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

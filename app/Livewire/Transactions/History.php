@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Transactions;
 
-use App\Models\Transactions;
+use App\Models\Transaction;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -15,7 +15,7 @@ class History extends Component
     #[Computed]
     public function transactions()
     {
-        return Transactions::orderBy('created_at', 'desc')->paginate(12);
+        return Transaction::orderBy('created_at', 'desc')->paginate(12);
 
     }
 

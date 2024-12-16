@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Donator;
 use App\Models\Fund;
+use App\Models\Transaction;
 use App\Models\User;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,7 +25,25 @@ class DatabaseSeeder extends Seeder
         User::factory(9)->create();
 
         Fund::factory(3)
-            ->hasTransactions(random_int(4,19))
             ->create();
+
+        Transaction::factory()
+            ->create([
+                'source_id' => Fund::inRandomOrder()->first()->id,
+                'destination_id' => Fund::inRandomOrder()->first()->id,
+            ]);
+        Transaction::factory()
+            ->create([
+                'source_id' => Fund::inRandomOrder()->first()->id,
+            ]);
+        Transaction::factory()
+            ->create([
+                'destination_id' => Fund::inRandomOrder()->first()->id,
+            ]);
+
+        Donator::factory(30)
+            ->create();
+
+
     }
 }

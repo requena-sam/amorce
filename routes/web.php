@@ -25,7 +25,7 @@ Route::view('profile', 'profile')
 //Finances
 Route::get('finances', [FinancesController::class, 'index'])->name('finances');
 
-//Transactions
+//Transaction
 Route::get('transactions', [TransactionsController::class, 'index'])->name('transactions');
 Route::get('meetings', [MeetingsController::class, 'index'])->name('meetings');
 Route::get('feedbacks', [FeedbacksController::class, 'index'])->name('feedbacks');

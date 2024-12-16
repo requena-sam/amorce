@@ -8,9 +8,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Transactions>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Transaction>
  */
-class TransactionsFactory extends Factory
+class TransactionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -23,10 +23,9 @@ class TransactionsFactory extends Factory
         return [
             'user_id' => $user->id,
             'amount' => $this->faker->numberBetween(1, 200),
-            'giver' => $this->faker->name(),
-            'giver_email' => $this->faker->email(),
+            'source' => 'Donateur',
+            'destination' => 'Projet',
             'transfer_type' => collect([TransferType::CSV->value, TransferType::MANUAL->value])->random(),
-            'transaction_type' => collect([TransactionType::DEPOT->value, TransactionType::RETRAIT->value])->random(),
         ];
     }
 }

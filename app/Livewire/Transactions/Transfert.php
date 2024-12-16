@@ -4,13 +4,14 @@ namespace App\Livewire\Transactions;
 
 use App\Livewire\Forms\TransferFundToFundForm;
 use App\Models\Fund;
-use App\Models\Transactions;
+use App\Models\Transaction;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class Transfert extends Component
 {
     public TransferFundToFundForm $form;
+
     #[Computed]
     public function funds()
     {
@@ -21,29 +22,27 @@ class Transfert extends Component
     {
         $this->validate();
         $data = $this->form->all();
-        Transactions::create([
-            'fund_id' => $data['target'],
+        $source = $data['source'];
+        $destination = $data['target'];
+        $source_name = Fund::find($source)->name;
+        $destination_name = Fund::find($destination)->name;
+        Transaction::create([
+            'source_id' => $source,
+            'source' => $source_name,
+            'destination_id' => $destination,
+            'destination' => $destination_name,
+            'donator' => 'admin',
+            'donator_email' => 'admin',
             'amount' => $data['amount'],
-            'transaction_type' => 'Dépot',
-            'transfer_type' => 'transfer manuel',
-            'giver' => 'admin',
-            'giver_email' => 'admin',
-            'user_id' => auth()->id(),
-        ]);
-        Transactions::create([
-            'fund_id' => $data['base'],
-            'amount' => $data['amount'],
-            'transaction_type' => 'Retrait',
-            'transfer_type' => 'transfer manuel',
-            'giver' => 'admin',
-            'giver_email' => 'admin',
+            'transaction_type' => 'Transfert',
+            'transfer_type' => 'Transfert manuel',
             'user_id' => auth()->id(),
         ]);
         $this->dispatch('openalert');
         $this->dispatch('refresh-history');
 
-
     }
+
     public function render()
     {
         return view('livewire.transactions.transfert');

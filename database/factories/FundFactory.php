@@ -18,7 +18,7 @@ class FundFactory extends Factory
     {
         $entrance = $this->faker->numberBetween(4000,10000);
         return [
-            'name' => $this->faker->words(2, true),
+            'name' => 'Fond '.$this->faker->lastName(),
             'entrance' => $entrance,
             'exit' => $this->faker->numberBetween(800, $entrance),
         ];

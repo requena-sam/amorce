@@ -24,6 +24,7 @@ class TransactionHistory extends Component
     {
         return $this->fund
             ->transactions()
+            ->orderBy('created_at', 'desc')
             ->paginate(5);
     }
 

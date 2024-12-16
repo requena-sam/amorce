@@ -28,10 +28,10 @@
                         {{ number_format($transaction->amount, 2, ',', ' ') }} €
                     </td>
                     <td class="px-4 py-3 text-sm font-medium">
-                        @if($transaction->transaction_type === 'Dépot')
-                            <span class="text-green-500">{{ $transaction->transaction_type }}</span>
-                        @else
-                            <span class="text-red-500">{{ $transaction->transaction_type }}</span>
+                        @if($transaction->destination_id === $fund->id)
+                            <span class="text-green-500">Dépot</span>
+                        @elseif($transaction->source_id === $fund->id)
+                            <span class="text-red-500">Retrait</span>
                         @endif
                     </td>
                 </tr>

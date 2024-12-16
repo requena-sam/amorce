@@ -11,7 +11,7 @@ class TransferFundToFundForm extends Form
     #[Validate('required|string|not_in:default')]
     public string $target;
     #[Validate('required|string|not_in:default')]
-    public string $base;
+    public string $source;
 
     #[Validate('required|numeric')]
     public string $amount;

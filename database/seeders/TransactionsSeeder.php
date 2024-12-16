@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Enums\TransactionType;
 use App\Enums\TransferType;
-use App\Models\Transactions;
+use App\Models\Transaction;
 use Illuminate\Database\Seeder;
 
 class TransactionsSeeder extends Seeder

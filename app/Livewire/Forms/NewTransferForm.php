@@ -12,10 +12,10 @@ class NewTransferForm extends Form
     public string $target;
 
     #[Validate('required|string')]
-    public string $giver;
+    public string $donator;
 
     #[Validate('required|email')]
-    public string $giver_email;
+    public string $donator_email;
 
     #[Validate('required|numeric')]
     public string $amount;
