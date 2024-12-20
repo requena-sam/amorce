@@ -17,6 +17,9 @@ class NewTransferForm extends Form
     #[Validate('required|email')]
     public string $donator_email;
 
+    #[Validate('nullable')]
+    public string $donator_phone;
+
     #[Validate('required|numeric')]
     public string $amount;
 

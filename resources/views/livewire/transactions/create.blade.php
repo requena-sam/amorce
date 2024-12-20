@@ -28,7 +28,7 @@
                 @enderror
             </div>
         </div>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-3 gap-4">
             <div class="flex gap-2 flex-col">
                 <x-input-label for="donator" value="Nom du donateur"/>
                 <x-text-input id="donator" type="text" placeholder="Nom du donator" wire:model="form.donator"/>
@@ -41,6 +41,14 @@
                 <x-text-input id="donator_email" type="text" placeholder="Email du donateur"
                               wire:model="form.donator_email"/>
                 @error('form.donator_email')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="flex gap-2 flex-col">
+                <x-input-label for="donator_phone" value="Numéro de telephone"/>
+                <x-text-input id="donator_phone" type="text" placeholder="0472 86 02 12"
+                              wire:model="form.donator_phone"/>
+                @error('form.donator_phone')
                 <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
             </div>

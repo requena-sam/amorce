@@ -14,7 +14,7 @@ require __DIR__.'/auth.php';
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
+Route::view('dashboard', 'dashboard.index')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
@@ -31,6 +31,9 @@ Route::get('meetings', [MeetingsController::class, 'index'])->name('meetings');
 Route::get('feedbacks', [FeedbacksController::class, 'index'])->name('feedbacks');
 Route::get('tasks', [TasksController::class, 'index'])->name('tasks');
 Route::get('users', [UsersController::class, 'index'])->name('users');
+
+//Detente
 Route::get('detente', [DetenteController::class, 'index'])->name('detente');
+Route::get('detente/individual', [DetenteController::class, 'show'])->name('detente.individual');
 
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
