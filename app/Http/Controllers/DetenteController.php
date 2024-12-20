@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Detente;
+
 class DetenteController extends Controller
 {
     public function index()
     {
-        return view('detente.index');
+        $detentes = Detente::all();
+        return view('detente.index', compact('detentes'));
     }
+
     public function show()
     {
         return view('livewire.detente.individual');

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Enums\DetenteStatus;
+use App\Models\Detente;
 use App\Models\Donator;
 use App\Models\Fund;
 use App\Models\Transaction;
@@ -17,6 +19,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        //User Seeding
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
@@ -24,9 +27,13 @@ class DatabaseSeeder extends Seeder
         ]);
         User::factory(9)->create();
 
+
+        //Fund Seeding
         Fund::factory(3)
             ->create();
 
+
+        //Transaction Seeding
         Transaction::factory()
             ->create([
                 'source_id' => Fund::inRandomOrder()->first()->id,
@@ -41,9 +48,21 @@ class DatabaseSeeder extends Seeder
                 'destination_id' => Fund::inRandomOrder()->first()->id,
             ]);
 
-        Donator::factory(30)
+
+        //Detente Seeding
+        Detente::factory()
+            ->hasAttached(Donator::factory()->count(9), fn() => [
+                'disponibility' => 'available'
+            ])
+            ->create([
+                'name' => 'Détente n°1',
+                'status' => DetenteStatus::ACTIVE->value,
+            ]);
+        Detente::factory(5)
+            ->hasAttached(Donator::factory()->count(9), fn() => [
+                'disponibility' => 'available'
+            ])
             ->create();
-
 
     }
 }

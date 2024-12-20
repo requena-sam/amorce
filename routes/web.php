@@ -34,6 +34,6 @@ Route::get('users', [UsersController::class, 'index'])->name('users');
 
 //Detente
 Route::get('detente', [DetenteController::class, 'index'])->name('detente');
-Route::get('detente/individual', [DetenteController::class, 'show'])->name('detente.individual');
+Route::get('detente/{id}', [DetenteController::class, 'show'])->name('detente.individual');
 
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
