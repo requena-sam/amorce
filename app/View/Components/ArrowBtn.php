@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class arrow-btn extends Component
+class ArrowBtn extends Component
 {
     /**
      * Create a new component instance.
