@@ -31,8 +31,6 @@ class Transfert extends Component
             'source' => $source_name,
             'destination_id' => $destination,
             'destination' => $destination_name,
-            'donator' => 'admin',
-            'donator_email' => 'admin',
             'amount' => $data['amount'],
             'transaction_type' => 'Transfert',
             'transfer_type' => 'Transfert manuel',
