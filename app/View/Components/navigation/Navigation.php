@@ -28,21 +28,6 @@ class Navigation extends Component
                 'icon' => 'transaction',
                 'route' => 'transactions',
             ],
-            /*'meetings' => [
-                'text' => 'Meeting',
-                'icon' => 'calendar',
-                'route' => 'meetings',
-            ],
-            'feedbacks' => [
-                'text' => 'Compte rendu',
-                'icon' => 'sheet',
-                'route' => 'feedbacks',
-            ],
-            'tasks' => [
-                'text' => 'To do',
-                'icon' => 'task',
-                'route' => 'tasks',
-            ],*/
             'users' => [
                 'text' => 'Users',
                 'icon' => 'user',
@@ -58,7 +43,6 @@ class Navigation extends Component
                 'icon' => 'sheet',
                 'route' => 'projets',
             ],
-
         ];
     }
 
