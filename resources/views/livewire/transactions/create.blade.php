@@ -1,7 +1,7 @@
 <section class="p-5 px-8 bg-white rounded-lg ">
     <h3 class="text-2xl font-medium mb-4">Ajouter une transaction</h3>
     <form wire:submit.prevent="newTransfer" class="flex flex-col gap-4">
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid lg:grid-cols-2 sm:grid-rows-1 gap-4">
             <div class="flex flex-col gap-2">
                 <x-input-label for="target" value="Fond concerné"/>
                 <select id="target" name="target" wire:model="form.target"
@@ -28,7 +28,7 @@
                 @enderror
             </div>
         </div>
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid lg:grid-cols-3 sm:grid-rows-1 gap-4">
             <div class="flex gap-2 flex-col">
                 <x-input-label for="donator" value="Nom du donateur"/>
                 <x-text-input id="donator" type="text" placeholder="Nom du donator" wire:model="form.donator"/>

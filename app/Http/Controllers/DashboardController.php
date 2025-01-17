@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-class MeetingsController extends Controller
+
+class DashboardController
 {
     public function index()
     {
-
+        return view('dashboard.index');
     }
 }

@@ -1,11 +1,10 @@
 <div x-data="counterAnimation({{ $balance }}, {{ $entranceBalance }}, {{ $exitBalance }})"
-     class="bg-white rounded-xl p-8 mb-4">
+     class="bg-white rounded-xl p-8 mb-4 shadow-lg">
     <div
         id="fondline"
-        class="flex justify-between items-center cursor-pointer relative"
-        @click="openFund = !openFund; if(openFund) startAnimation()"
-    >
-        <h2 class="text-2xl">{{$fund->name}}</h2>
+        class="flex justify-between items-center cursor-pointer relative border-b pb-4 mb-4"
+        @click="openFund = !openFund; if(openFund) startAnimation()">
+        <h3 class="text-2xl font-bold">{{$fund->name}}</h3>
         <svg
             id="Calque_2"
             xmlns="http://www.w3.org/2000/svg"
@@ -15,60 +14,71 @@
             <x-icons.dropdown/>
         </svg>
     </div>
+    <div class="flex gap-4 mt-4 text-gray-700" x-show="!openFund">
+        <div class="text-sm text-gray-500">
+            <p class="font-semibold">Solde:</p>
+            <p>{{ $balance }} €</p>
+        </div>
+        <div class="text-sm">
+            <p class="font-semibold">Entrée:</p>
+            <p class="text-green-500">{{ $entranceBalance }} €</p>
+        </div>
+        <div class="text-sm">
+            <p class="font-semibold">Sortie:</p>
+            <p class="text-red-500">{{ $exitBalance }} €</p>
+        </div>
+    </div>
     <div
         id="fondcontent"
-        class="transition-all duration-300 overflow-hidden relative"
+        class="transition-all duration-300 overflow-hidden relative mt-4"
         x-collapse
         x-show="openFund">
-        <x-edit-button modalcontent="finances.edit" :model="$fund"></x-edit-button>
-        <div class="grid grid-cols-3 py-8 gap-6">
-            <!-- Animation du solde -->
+        <div class="flex justify-end">
+            <x-edit-button modalcontent="finances.edit" :model="$fund">Editer</x-edit-button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 py-8 gap-6">
             <div class="bg-amber-300 text-black py-6 px-8 rounded-xl">
-                <h3 class="text-xs">Solde</h3>
+                <h4 class="text-xs font-semibold">Solde</h4>
                 <p class="text-4xl mt-2">
                     <template x-for="digit in animatedValues.amount">
                         <span x-text="digit"></span>
                     </template>
                     €
                 </p>
-                <div class="flex justify-between mt-5 text-xs">
+                <div class="flex flex-col lg:flex-row justify-between mt-5 text-xs">
                     <p>10 transactions</p>
                     <p>11% last month</p>
                 </div>
             </div>
 
-            <!-- Animation des entrées -->
             <div class="bg-green-300 text-black py-6 px-8 rounded-xl">
-                <h3 class="text-xs">Entrée</h3>
+                <h4 class="text-xs font-semibold">Entrée</h4>
                 <p class="text-4xl mt-2">
                     <template x-for="digit in animatedValues.entrance">
                         <span x-text="digit"></span>
                     </template>
                     €
                 </p>
-                <div class="flex justify-between mt-5 text-xs">
+                <div class="flex flex-col lg:flex-row justify-between mt-5 text-xs">
                     <p>7 transactions</p>
                     <p>+12% last month</p>
                 </div>
             </div>
 
-            <!-- Animation des sorties -->
             <div class="bg-red-300 text-black py-6 px-8 rounded-xl">
-                <h3 class="text-xs">Sortie</h3>
+                <h4 class="text-xs font-semibold">Sortie</h4>
                 <p class="text-4xl mt-2">
                     <template x-for="digit in animatedValues.exit">
                         <span x-text="digit"></span>
                     </template>
                     €
                 </p>
-                <div class="flex justify-between mt-5 text-xs">
+                <div class="flex flex-col lg:flex-row justify-between mt-5 text-xs">
                     <p>3 transactions</p>
                     <p>-4% last month</p>
                 </div>
             </div>
         </div>
-
-        <!-- Liste des transactions -->
         <div class="mt-4">
             @livewire('finances.transaction-history', ['fund' => $fund])
         </div>
@@ -92,7 +102,7 @@
                 exit: Array(targetExit.toString().length).fill(0),
             },
 
-            animationSpeed: 50, // Vitesse d'incrémentation (ms)
+            animationSpeed: 50,
 
             startAnimation() {
                 this.animate('amount', this.targets.amount);
@@ -123,4 +133,3 @@
         }));
     });
 </script>
-

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Detente extends Model
 {
-
-
+    /** @use HasFactory<\Database\Factories\DetenteFactory> */
+    use HasFactory;
     protected $fillable = [
         'name',
         'status',
@@ -19,13 +19,16 @@ class Detente extends Model
         return $this->hasMany(Attendance::class);
     }
 
+    public function projets()
+    {
+        return $this->belongsToMany(Projet::class);
+    }
+
     public function donators()
     {
         return $this->belongsToMany(Donator::class, Attendance::class)
-            ->withPivot('disponibility')
             ->withTimestamps();
     }
 
-    /** @use HasFactory<\Database\Factories\DetenteFactory> */
-    use HasFactory;
+
 }

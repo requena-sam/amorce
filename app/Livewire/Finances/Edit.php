@@ -23,6 +23,9 @@ class Edit extends Component
         $fund = Fund::find($this->model['id']);
         $fund->update($data);
         $this->dispatch('refresh-funds');
+        $this->dispatch('openalert', ['message' => 'Fond mis à jour avec succès']);
+        $this->dispatch('modalClosed');
+
 
     }
 

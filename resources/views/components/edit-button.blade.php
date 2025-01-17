@@ -1,5 +1,5 @@
 @props(['modalcontent', 'model'])
-<button class="flex absolute top-0 right-0 gap-2 text-right" x-data="{model:@js($model)}" @click="$wire.openmodal('{{$modalcontent}}', model); $dispatch('openedmodal')">
+<button class="flex gap-2 text-right px-3.5 py-2 bg-amber-400 rounded" x-data="{model:@js($model)}" @click="$wire.openmodal('{{$modalcontent}}', model); $dispatch('openedmodal')">
     <x-icons.edit></x-icons.edit>
-    <span>Editer</span>
+    <span class="text-sm">{{$slot}}</span>
 </button>

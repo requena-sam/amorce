@@ -17,7 +17,10 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->boolean('is_drawable')->default(true);
+            $table->string('count_detente')->nullable();
             $table->json('donations_dates')->nullable();
+            $table->boolean('disponibility')->default(true);
+            $table->date('last_detente')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

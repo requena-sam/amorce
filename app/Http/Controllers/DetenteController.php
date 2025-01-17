@@ -11,10 +11,4 @@ class DetenteController extends Controller
         $detentes = Detente::all();
         return view('detente.index', compact('detentes'));
     }
-
-    public function show(Detente $detente)
-    {
-        return view('livewire.detente.individual', compact('detente'));
-    }
 }
-

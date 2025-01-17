@@ -3,14 +3,16 @@
 namespace Database\Seeders;
 
 use App\Enums\DetenteStatus;
+use App\Enums\FundType;
 use App\Models\Detente;
 use App\Models\Donator;
 use App\Models\Fund;
+use App\Models\Projet;
 use App\Models\Transaction;
 use App\Models\User;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,16 +23,20 @@ class DatabaseSeeder extends Seeder
     {
         //User Seeding
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => 'test',
+            'name' => 'Sam Requena',
+            'email' => 'sam@gmail.be',
+            'password' => 'ch4nge_th1s',
         ]);
         User::factory(9)->create();
 
 
         //Fund Seeding
         Fund::factory(3)
-            ->create();
+            ->create(
+                [
+                    'type' => FundType::GENERAL->value,
+                ]
+            );
 
 
         //Transaction Seeding
@@ -51,18 +57,53 @@ class DatabaseSeeder extends Seeder
 
         //Detente Seeding
         Detente::factory()
-            ->hasAttached(Donator::factory()->count(9), fn() => [
-                'disponibility' => 'available'
-            ])
+            ->hasAttached(Donator::factory(['disponibility' => true])->count(9))
             ->create([
                 'name' => 'Détente n°1',
                 'status' => DetenteStatus::ACTIVE->value,
             ]);
+
         Detente::factory(5)
-            ->hasAttached(Donator::factory()->count(9), fn() => [
-                'disponibility' => 'available'
+            ->hasAttached(Donator::factory(['disponibility' => true])->count(9))
+            ->sequence(fn($sequence) => [
+                'name' => 'Détente n°' . ($sequence->index + 2),
             ])
             ->create();
 
+        //Donator Seeding
+        Donator::factory(3)
+            ->create([
+                'count_detente' => 1,
+                'disponibility' => true,
+            ]);
+        Donator::factory(3)
+            ->create([
+                'count_detente' => 2,
+                'disponibility' => true,
+            ]);
+        Donator::factory(20)->create([
+            'disponibility' => false,
+        ]);
+
+        Donator::factory(20)->create([
+            'donations_dates' => $this->generateConsecutiveMonthlyDates(3),
+            'is_drawable' => true,
+            'count_detente' => null,
+            'disponibility' => false,
+        ]);
+        //Projet Seeding
+        Projet::factory(5)->create();
+    }
+
+    private function generateConsecutiveMonthlyDates(int $months): array
+    {
+        $dates = [];
+        $startMonth = Carbon::now()->startOfMonth();
+
+        for ($i = 0; $i < $months; $i++) {
+            $dates[] = $startMonth->copy()->addMonths($i)->format('Y-m');
+        }
+
+        return $dates;
     }
 }

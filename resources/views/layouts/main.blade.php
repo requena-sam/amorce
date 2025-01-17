@@ -8,18 +8,34 @@
     @vite('resources/css/app.css')
     <title>Amorce</title>
 </head>
-<body class="grid grid-cols-[1fr_4fr] bg-gray-200 h-screen">
-<!-- Navigation latérale -->
-<nav class="bg-white flex flex-col gap-3 p-4">
-    <h1 class="justify-self-center p-4 mt-5 font-bold text-3xl text-center">{{ __('Amorce') }}</h1>
+<body class="bg-gray-200 h-screen" x-data="{ openNav: false }">
+<h1 class="sr-only">Amorce</h1>
+<button @click="openNav = !openNav" class="fixed top-8 left-8 z-50 bg-amber-400 text-black p-2 rounded">
+    <template x-if="!openNav">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+             stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"/>
+        </svg>
+    </template>
+    <template x-if="openNav">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+             stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+    </template>
+</button>
+<nav :class="{'-translate-x-full': !openNav, 'translate-x-0': openNav}"
+     class="bg-white flex flex-col gap-3 p-4 fixed-nav transition-transform fixed z-40 h-full w-80 overflow-y-auto">
+    <h2 class="justify-self-center p-4 mt-5 font-bold text-3xl text-center">{{ __('Amorce') }}</h2>
     <x-navigation.navigation/>
 </nav>
-<!-- Contenu principal -->
-<main class="overflow-y-auto" x-data="{openMod:false, openAlert:false}" @openedmodal.window="openMod=true" @closedmodal.window="openMod=false" @openalert.window="openAlert = true; setTimeout(() => openAlert = false, 3000)">
+<main class="overflow-y-auto" x-data="{openMod:false, openAlert:false}" @openedmodal.window="openMod=true"
+      @closedmodal.window="openMod=false"
+      @openalert.window="openAlert = true; setTimeout(() => openAlert = false, 3000)">
     <x-profile-dropdown/>
-    <section class="p-12 relative">
-    {{ $slot }}
-    </section>
+    <div class="p-12 relative">
+        {{ $slot }}
+    </div>
     @livewire('modal')
 </main>
 </body>

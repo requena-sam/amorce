@@ -1,4 +1,9 @@
-<div x-show="openMod" class="relative z-40">
+<div x-init="$wire.on('modalClosed', () => {
+         openMod = false;
+         $wire.closemodal('{{ $childComponent }}');
+         })"
+     x-show="openMod"
+     class="relative z-40">
     <!-- Fond semi-transparent -->
     <div
         class="fixed inset-0 bg-black bg-opacity-50 z-40 center"
@@ -14,7 +19,7 @@
 
     <!-- Contenu de la modale -->
     <div
-        class="fixed inset-y-0 right-0 w-1/3 bg-white shadow-lg z-50 flex flex-col transform"
+        class="fixed inset-y-0 right-0 lg:w-1/3 md:w-2/3 sm:w-2/3 bg-white shadow-lg z-50 flex flex-col transform"
         x-show="openMod"
         x-transition:enter="transition-transform ease-out duration-500"
         x-transition:enter-start="translate-x-full"
@@ -35,7 +40,7 @@
         </div>
 
         <!-- Contenu Livewire -->
-        <div class="p-6">
+        <div class="p-6 overflow-scroll">
             <div>
                 @if($childComponent && $model)
                     @livewire($childComponent, compact('model'))
@@ -45,4 +50,4 @@
             </div>
         </div>
     </div>
-</div>
+</>

@@ -5,6 +5,7 @@ namespace App\Livewire\Detente;
 use App\Models\Detente;
 use App\Traits\openModalTrait;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Index extends Component
@@ -19,6 +20,11 @@ class Index extends Component
     public function detentes() : \Illuminate\Database\Eloquent\Collection
     {
         return Detente::all();
+    }
+    #[On('refresh-detentes')]
+    public function refreshDetentes()
+    {
+        unset($this->detentes);
     }
 
     public function render()

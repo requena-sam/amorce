@@ -36,7 +36,7 @@ class Transfert extends Component
             'transfer_type' => 'Transfert manuel',
             'user_id' => auth()->id(),
         ]);
-        $this->dispatch('openalert');
+        $this->dispatch('openalert', ['message' => 'Transfert effectué avec succès']);
         $this->dispatch('refresh-history');
 
     }

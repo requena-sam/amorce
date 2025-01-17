@@ -1,12 +1,12 @@
 <section class="flex flex-col gap-5">
-    @livewire('alert', ['message' => 'Détente créer avec succes'])
-    <div class="flex justify-between mb-5">
+    @livewire('succes-alert')
+    <div class="flex flex-col sm:flex-col md:flex-row md:justify-between mb-5">
         <h2 class="text-3xl">Détentes</h2>
-        <x-cta-opener modalcontent="">Créer une nouvelle détente</x-cta-opener>
+        <x-cta-opener modalcontent="detente.create" class="mt-4 md:mt-0">Créer une nouvelle détente</x-cta-opener>
     </div>
     <section class="mb-4">
         <h3 class="text-2xl font-medium mb-4">Détente en cours</h3>
-        <div class="grid grid-cols-3 gap-10">
+        <div class="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             @foreach($this->detentes as $detente)
                 @if($detente->status === \App\Enums\DetenteStatus::ACTIVE->value)
                     <div class="px-5 py-3.5 bg-white rounded-lg flex gap-10 justify-between items-center">
@@ -27,7 +27,7 @@
     </section>
     <section class="mb-4">
         <h3 class="text-2xl font-medium mb-4">Détente en attente</h3>
-        <div class="grid grid-cols-3 gap-10">
+        <div class="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             @foreach($this->detentes as $detente)
                 @if($detente->status === \App\Enums\DetenteStatus::PENDING->value)
                     <div class="px-5 py-3.5 bg-white rounded-lg flex gap-10 justify-between items-center">
@@ -48,7 +48,7 @@
     </section>
     <section class="mb-4">
         <h3 class="text-2xl font-medium mb-4">Détente passées</h3>
-        <div class="grid grid-cols-3 gap-10">
+        <div class="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             @foreach($this->detentes as $detente)
                 @if($detente->status === \App\Enums\DetenteStatus::CLOSED->value)
                     <div class="px-5 py-3.5 bg-white rounded-lg flex gap-10 justify-between items-center">

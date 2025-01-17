@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Finances;
 
-use App\Http\Requests\FinancesStoreRequest;
 use App\Livewire\Forms\CreateFundForm;
 use App\Models\Fund;
 use Livewire\Component;
@@ -19,7 +18,9 @@ class Create extends Component
         $data = $this->form->all();
         Fund::create($data);
         $this->dispatch('refresh-funds');
-        $this->dispatch('openalert');
+        $this->dispatch('openalert', ['message' => 'Fond créer avec succès']);
+        $this->dispatch('modalClosed');
+
     }
 
     public function render()

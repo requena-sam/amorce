@@ -11,9 +11,8 @@ class IndividualFund extends Component
     use openModalTrait;
 
     public $fund;
-    public $childComponent = null; // Définir la variable du composant enfant
+    public $childComponent = null;
 
-    // app/Livewire/Finances/IndividualFund.php
 
     #[On('refresh-funds')]
     public function render()

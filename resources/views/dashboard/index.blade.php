@@ -1,9 +1,4 @@
 <x-main-layout>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Dashboard</h1>
-            </div>
-        </div>
-    </div>
+    <h2 class="text-3xl mb-5">Dashboard</h2>
+   @livewire('dashboard.index')
 </x-main-layout>

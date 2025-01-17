@@ -19,7 +19,7 @@ class DetenteFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => 'Détente n°'.$this->faker->numberBetween(2,20),
+            'name' => 'Détente n°',
             'status' => $this->faker->randomElement([DetenteStatus::PENDING->value, DetenteStatus::CLOSED->value]),
         ];
     }

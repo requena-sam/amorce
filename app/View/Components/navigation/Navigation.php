@@ -28,7 +28,7 @@ class Navigation extends Component
                 'icon' => 'transaction',
                 'route' => 'transactions',
             ],
-            'meetings' => [
+            /*'meetings' => [
                 'text' => 'Meeting',
                 'icon' => 'calendar',
                 'route' => 'meetings',
@@ -42,16 +42,21 @@ class Navigation extends Component
                 'text' => 'To do',
                 'icon' => 'task',
                 'route' => 'tasks',
-            ],
+            ],*/
             'users' => [
                 'text' => 'Users',
                 'icon' => 'user',
                 'route' => 'users',
             ],
             'detente' => [
-                'text' => 'Détente',
+                'text' => 'Détentes',
                 'icon' => 'random',
                 'route' => 'detente',
+            ],
+            'projets' => [
+                'text' => 'projets',
+                'icon' => 'sheet',
+                'route' => 'projets',
             ],
 
         ];

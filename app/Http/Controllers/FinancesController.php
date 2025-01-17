@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fund;
+use Illuminate\Routing\Controller;
 
 class FinancesController extends Controller
 {

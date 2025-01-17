@@ -17,7 +17,7 @@ class Index extends Component
     }
 
     #[Computed]
-    public function users(): \Illuminate\Database\Eloquent\Collection
+    public function users()
     {
         return User::all();
     }

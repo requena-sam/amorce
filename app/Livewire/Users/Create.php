@@ -33,9 +33,12 @@ class Create extends Component
         User::create($data);
 
         $this->dispatch('refresh-users');
-        $this->dispatch('openalert');
+        $this->dispatch('openalert', ['message' => 'Utilisateur créé avec succès']);
+        $this->dispatch('modalClosed');
+
 
     }
+
 
     public function render()
     {

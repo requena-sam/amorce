@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('donator_id');
             $table->unsignedBigInteger('detente_id');
-            $table->string('disponibility');
             $table->timestamps();
         });
     }

@@ -44,7 +44,6 @@ class Create extends Component
             $destination_name = Fund::find($fundID)->name;
         }
 
-        // Créer la transaction
         Transaction::create([
             'source_id' => $source,
             'source' => $source_name,
@@ -56,7 +55,6 @@ class Create extends Component
             'user_id' => auth()->id(),
         ]);
 
-        // Gestion de mes donateurs
         $donator = Donator::query()
             ->where(function ($query) use ($data) {
                 $query->where('name', $data['donator'])
@@ -100,7 +98,7 @@ class Create extends Component
             ]);
         }
 
-        $this->dispatch('openalert');
+        $this->dispatch('openalert', ['message' => 'Transaction créer avec succès']);
         $this->dispatch('refresh-history');
     }
 
