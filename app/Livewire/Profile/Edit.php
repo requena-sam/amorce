@@ -19,6 +19,13 @@ class Edit extends Component
         'image' => null,
     ];
 
+    public function mount()
+    {
+        $user = Auth::user();
+        $this->form['name'] = $user->name;
+        $this->form['email'] = $user->email;
+    }
+
     public function updateProfile()
     {
         $this->validate([

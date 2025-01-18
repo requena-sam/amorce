@@ -19,10 +19,10 @@
                 </div>
             </div>
             <div class="mt-6">
-                <h4 class="text-lg font-medium text-gray-900">{{ __('Profile Information') }}</h4>
+                <h4 class="text-lg font-medium text-gray-900">{{ __('Information du profile') }}</h4>
                 <div class="mt-4 space-y-4">
                     <div>
-                        <span class="font-medium text-gray-700">{{ __('Name:') }}</span>
+                        <span class="font-medium text-gray-700">{{ __('Nom:') }}</span>
                         <p class="text-gray-900">{{ $user->name }}</p>
                     </div>
                     <div>
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="mt-6 flex justify-end">
-                <x-cta-opener modalcontent="profile.edit">{{ __('Edit Profile') }}</x-cta-opener>
+                <x-cta-opener modalcontent="profile.edit">{{ __('Modifier le profile') }}</x-cta-opener>
             </div>
         </div>
     </div>
