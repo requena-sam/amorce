@@ -27,6 +27,7 @@
 <nav :class="{'-translate-x-full': !openNav, 'translate-x-0': openNav}"
      class="bg-white flex flex-col gap-3 p-4 fixed-nav transition-transform fixed z-40 h-full w-80 overflow-y-auto">
     <h2 class="justify-self-center p-4 mt-5 font-bold text-3xl text-center">{{ __('Amorce') }}</h2>
+    @livewire('nav.main-navigation')
 {{--
     <x-navigation.navigation/>
 --}}
