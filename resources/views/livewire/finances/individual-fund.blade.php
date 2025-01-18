@@ -33,8 +33,12 @@
         class="transition-all duration-300 overflow-hidden relative mt-4"
         x-collapse
         x-show="openFund">
-        <div class="flex justify-end">
+        <div class="flex justify-end gap-2">
             <x-edit-button modalcontent="finances.edit" :model="$fund">Editer</x-edit-button>
+            <button wire:click="confirmDelete"
+                    class="flex gap-2 text-right px-3.5 py-2 bg-red-500 hover:bg-red-700 text-white text-sm rounded">
+                Supprimer
+            </button>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 py-8 gap-6">
             <div class="bg-amber-300 text-black py-6 px-8 rounded-xl">
@@ -83,6 +87,25 @@
             @livewire('finances.transaction-history', ['fund' => $fund])
         </div>
     </div>
+
+    @if($showDeleteModal)
+        <div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+            <div class="bg-white p-6 rounded-lg">
+                <h2 class="text-xl font-bold mb-4">Confirmer la suppression</h2>
+                <p>Êtes-vous sûr de vouloir supprimer ce fond ? Cette action est irréversible.</p>
+                <div class="mt-6 flex justify-end gap-3">
+                    <button type="button" wire:click="cancelDelete"
+                            class="py-2 px-4 bg-amber-400 rounded">
+                        Annuler
+                    </button>
+                    <button type="button" wire:click="deleteFund"
+                            class="py-2 px-4 bg-red-500 hover:bg-red-700 text-white rounded">
+                        Supprimer
+                    </button>
+                </div>
+            </div>
+        </div>
+    @endif
 </div>
 <script>
     document.addEventListener('alpine:init', () => {

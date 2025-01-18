@@ -57,11 +57,11 @@
                 <p>Êtes-vous sûr de vouloir supprimer ce projet ? Cette action est irréversible.</p>
                 <div class="mt-6 flex justify-end gap-3">
                     <button type="button" wire:click="cancelDelete"
-                            class="py-2 px-4 bg-gray-500 hover:bg-gray-700 text-white rounded-lg">
+                            class="py-2 px-4 bg-amber-400 rounded">
                         Annuler
                     </button>
                     <button type="button" wire:click="deleteDetente"
-                            class="py-2 px-4 bg-red-500 hover:bg-red-700 text-white rounded-lg">
+                            class="py-2 px-4 bg-red-500 hover:bg-red-700 text-white rounded">
                         Supprimer
                     </button>
                 </div>
