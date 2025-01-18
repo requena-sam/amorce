@@ -37,8 +37,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'michael@lecerf.be',
             'password' => 'ch4nge_th1s',
         ]);
-        User::factory(9)->create();
-
 
         //Fund Seeding
         Fund::factory(3)
