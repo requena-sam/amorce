@@ -23,9 +23,19 @@ class DatabaseSeeder extends Seeder
     {
         //User Seeding
         User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.be',
-            'password' => 'admin_password',
+            'name' => 'Sam',
+            'email' => 'sam@gmail.be',
+            'password' => 'samsam',
+        ]);
+        User::factory()->create([
+            'name' => 'Dominique Vilain',
+            'email' => 'dominique.vilain@hepl.be',
+            'password' => 'ch4nge_th1s',
+        ]);
+        User::factory()->create([
+            'name' => 'Michael Lecerf',
+            'email' => 'michael@lecerf.be',
+            'password' => 'ch4nge_th1s',
         ]);
         User::factory(9)->create();
 
