@@ -40,13 +40,7 @@ class DatabaseSeeder extends Seeder
 
         //Fund Seeding
         Fund::factory(3)
-            ->create(
-                [
-                    'type' => FundType::GENERAL->value,
-                ]
-            );
-
-
+            ->create();
         //Transaction Seeding
         Transaction::factory()
             ->create([
